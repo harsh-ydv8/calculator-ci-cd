@@ -47,13 +47,12 @@ Workflow file: [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml)
 ---
 
 ## 📂 Project Structure
-calculator-app/
-├── index.html # Main calculator web page
+calculator-ci-cd/
+├── index.html
 ├── .github/
-│ └── workflows/
-│ └── deploy.yml # GitHub Actions workflow for deployment
-└── README.md # Project documentation
-
+│   └── workflows/
+│       └── deploy.yml
+└── README.md
 
 ---
 
