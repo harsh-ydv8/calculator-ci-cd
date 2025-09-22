@@ -6,31 +6,54 @@
   <title>Simple Calculator</title>
   <style>
     body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
-    input, button { padding: 10px; margin: 5px; font-size: 16px; }
+    input, button, select { padding: 10px; margin: 5px; font-size: 16px; }
+    button { cursor: pointer; }
   </style>
 </head>
 <body>
   <h1>Calculator</h1>
+  
   <input type="number" id="num1" placeholder="Number 1">
   <input type="number" id="num2" placeholder="Number 2"><br>
-  <button onclick="calculate('+')">+</button>
-  <button onclick="calculate('-')">-</button>
-  <button onclick="calculate('*')">*</button>
-  <button onclick="calculate('/')">/</button>
+
+  <select id="operation">
+    <option value="+">+</option>
+    <option value="-">-</option>
+    <option value="*">*</option>
+    <option value="/">/</option>
+  </select>
+  <br>
+
+  <button onclick="calculate()">Calculate</button>
+  <button onclick="clearCalc()">Clear</button>
+
   <h2 id="result">Result: </h2>
 
   <script>
-    function calculate(op) {
+    function calculate() {
       let n1 = parseFloat(document.getElementById('num1').value);
       let n2 = parseFloat(document.getElementById('num2').value);
-      let result = 0;
-      switch(op) {
-        case '+': result = n1 + n2; break;
-        case '-': result = n1 - n2; break;
-        case '*': result = n1 * n2; break;
-        case '/': result = n2 !== 0 ? n1 / n2 : 'Infinity'; break;
+      let op = document.getElementById('operation').value;
+      let result = '';
+
+      if (isNaN(n1) || isNaN(n2)) {
+        result = "Please enter both numbers!";
+      } else {
+        switch(op) {
+          case '+': result = n1 + n2; break;
+          case '-': result = n1 - n2; break;
+          case '*': result = n1 * n2; break;
+          case '/': result = n2 !== 0 ? n1 / n2 : "Infinity"; break;
+        }
       }
       document.getElementById('result').innerText = "Result: " + result;
+    }
+
+    function clearCalc() {
+      document.getElementById('num1').value = "";
+      document.getElementById('num2').value = "";
+      document.getElementById('operation').value = "+";
+      document.getElementById('result').innerText = "Result: ";
     }
   </script>
 </body>
