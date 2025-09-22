@@ -1,2 +1,2 @@
-# calculator-ci-cd
-A basic project to demostrate ci/cd using github actions
+# Calculator-ci-cd
+A basic repo to demostrate ci/cd using github actions
